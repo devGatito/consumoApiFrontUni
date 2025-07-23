@@ -23,13 +23,17 @@ function tablaClientes(){
             llenadoTabla += "<td>" + data[i].id + "</td>";
             llenadoTabla += "<td>" + data[i].nombre + "</td>";
             llenadoTabla += "<td>" + data[i].facultad + "</td>";
+llenadoTabla += `<td>
+  <i class="bi bi-pencil-square abrirEditar" data-id="${data[i].id}"></i>
+  <i class="bi bi-trash2 abrirBorrar" data-id="${data[i].id}"></i>
+</td>`;
+        
             
             
 
            }
            $("#idTable").html(llenadoTabla);
-           //buscarAtributo
-           //searchInput
+          
            $("#buscar").on("keyup", function () {
         var value = $(this).val().toLowerCase();
         $("#idTable tr").filter(function () {
@@ -46,16 +50,65 @@ function tablaClientes(){
 }
 
 tablaClientes();
+// Evento para editar
+$(document).on("click", ".abrirEditar", function () {
+  const id = $(this).data("id");
 
-$("#id")
+  $.ajax({
+    url: 'http://localhost:8080/CarreraWS/buscar',
+    type: 'POST',
+    data: JSON.stringify({ id: id }),
+    contentType: 'application/json',
+    success: function (carrera) {
+      // Llenar el formulario con los datos
+      $("#inputId").val(carrera.id);
+      $("#inputNombre").val(carrera.nombre);
+      $("#inputFacultad").val(carrera.facultad);
+      $("#inputDuracion").val(carrera.duracion);
+
+      // Abrir modal
+      $("#exampleModal").modal("show");
+    },
+    error: function (error) {
+      console.error("Error al buscar carrera:", error);
+    }
+  });
+});
+
+// Evento para borrar
+$(document).on("click", ".abrirBorrar", function () {
+  const id = $(this).data("id");
+
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: 'Esta acción no se puede deshacer',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        url: 'http://localhost:8080/CarreraWS/eliminar',
+        type: 'POST',
+        data: JSON.stringify({ id: id }),
+        contentType: 'application/json',
+        success: function () {
+          Swal.fire('Eliminado', 'La carrera fue eliminada.', 'success');
+          tablaClientes();
+        },
+        error: function (error) {
+          console.error("Error al eliminar carrera:", error);
+          Swal.fire('Error', 'No se pudo eliminar la carrera.', 'error');
+        }
+      });
+    }
+  });
+});
 
 
-var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
 
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
+
 
 
 
@@ -83,11 +136,11 @@ function guardarCarrera() {
   };
 
   $.ajax({
-    url: 'http://localhost:8080/CarreraWS/guardar',
+    url: 'http://localhost:8080/CarreraWS/editar',
     type: 'POST',
     data: JSON.stringify(nuevaCarrera),
     contentType: 'application/json',
-    success: function(response) {
+    success: function() {
       Swal.fire({
         icon: 'success',
         title: 'Carrera guardada',
@@ -116,3 +169,4 @@ function guardarCarrera() {
     }
   });
 }
+
