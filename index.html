@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./CSS/styles.css">
+
+
+    <title>Document</title>
+
+</head>
+
+<body>
+   
+    <div class="element element-2">
+
+        <!--Barra de navegacion-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="https://imgs.search.brave.com/exfbrCzPuk1d8DuJHz9NSYDsbxHoH_OEhoNcMjy0_cs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc2Vla2xvZ28u/Y29tL2xvZ28tcG5n/LzQ4LzIvdW5pdmVy/c2lkYWQtZGUtdmFs/cGFyYWlzby1sb2dv/LXBuZ19zZWVrbG9n/by00ODEyOTQucG5n" width="100px" height="50px" class=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Personas</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Opciones
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Lista de Socios</a></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Lista de Guardar</a></li>
+            <!--
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            -->
+          </ul>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="#">Empresas</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="#">Pide Prestamo</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="buscar">
+        <button class="btn btn-outline-success" type="submit" id="buscarAtributo">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+    </div>
+
+
+
+    <div class="element element-3">
+        <h2 class="text-center">Universidades</h2>
+        <div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+
+                        <th scope="col">Ingenerias Disponibles</th>
+                        <th scope="col">Faculdad</th>
+                        
+                    </tr>
+                </thead>
+                <tbody id="idTable">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Juan</td>
+                        <td>Perez</td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        
+        </div>
+     </div>
+
+     <!--
+        <footer>
+           <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ullam labore harum.</h1>
+        </footer>
+
+        -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Guardar Carrera</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!-- ID -->
+          <div class="mb-3">
+            <label for="inputId" class="form-label">ID</label>
+            <input type="number" class="form-control" id="inputId" placeholder="Ingresa el ID de la carrera">
+          </div>
+
+          <!-- Nombre -->
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre de la carrera</label>
+            <input type="text" class="form-control" id="inputNombre" placeholder="Ej: Ingeniería en Sistemas">
+          </div>
+
+          <!-- Facultad -->
+          <div class="mb-3">
+            <label for="inputFacultad" class="form-label">Facultad</label>
+            <input type="text" class="form-control" id="inputFacultad" placeholder="Ej: Facultad de Ingeniería">
+          </div>
+
+          <!-- Duración -->
+          <div class="mb-3">
+            <label for="inputDuracion" class="form-label">Duración</label>
+            <input type="text" class="form-control" id="inputDuracion" placeholder="Ej: 4 años">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="guardarCarrera()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./JS/main.js"></script>
+
+</body>
+
+</html>
